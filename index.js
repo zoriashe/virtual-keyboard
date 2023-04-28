@@ -66,8 +66,6 @@ const keysEn = [
   {value: 'ArrRight', isSpecial: false, isSpace: false},
 ]
 
-console.log(navigator.systemLanguage)
-
 const bodyInner = `
   <textarea name="sample" id="text-input" cols="115" rows="5"></textarea>
   <div class="keyboard" id="keyboard">
@@ -80,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let keyboard;
 
-const keyboardInit = setTimeout(() => {
+
+setTimeout(() => {
   keyboard = document.querySelector('#keyboard')
   appendKeyboard()
 }, 1);
@@ -116,15 +115,17 @@ addEventListener('keyup', (e) => {
   }}); 
 })
 
-let btns = keyboard.childNodes
 
-btns.forEach(element => {
-  element.addEventListener('click', () => {
-    element.classList.add('pressed')
+
+setTimeout(() => {
+  let btns = keyboard.childNodes
+
+  function clickHandler({ currentTarget: target }) {
+    target.classList.add('pressed')
     setTimeout(() => {
-      element.classList.remove('pressed')
-    }, 100);
-  })
-  // console.log(element)
-    
-}); 
+      target.classList.remove('pressed')
+    }, 150);
+  }
+
+  btns.forEach(btn => btn.addEventListener('click', clickHandler))
+}, 1)

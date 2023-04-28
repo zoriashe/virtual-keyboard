@@ -35,6 +35,7 @@ body {
   width: 50px;
   height: 50px;
   background-color: #000;
+  cursor: pointer;
 }
 
 .special-key {
@@ -45,6 +46,7 @@ body {
   width: 105px;
   background-color: #000;
   height: 50px;
+  cursor: pointer;
 }
 
 .space-key {
@@ -55,6 +57,7 @@ body {
   width: calc(54.5px * 7);
   background-color: #000;
   height: 50px;
+  cursor: pointer;
 }
 
 .pressed {
