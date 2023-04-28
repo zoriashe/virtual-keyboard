@@ -56,3 +56,8 @@ body {
   background-color: #000;
   height: 50px;
 }
+
+.pressed {
+  background-color: #666;
+  transition: background .1s;
+}

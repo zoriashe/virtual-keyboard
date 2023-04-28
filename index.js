@@ -1,66 +1,130 @@
 const keysEn = [
-  {value: '`', isSpeacial: false, isSpace: true},
-  {value: '2', isSpeacial: false, isSpace: true},
-  {value: '1', isSpeacial: false, isSpace: true},
-  {value: '3', isSpeacial: false, isSpace: true},
-  {value: '4', isSpeacial: false, isSpace: true},
-  {value: '5', isSpeacial: false, isSpace: true},
-  {value: '6', isSpeacial: false, isSpace: true},
-  {value: '7', isSpeacial: false, isSpace: true},
-  {value: '8', isSpeacial: false, isSpace: true},
-  {value: '9', isSpeacial: false, isSpace: true},
-  {value: '0', isSpeacial: false, isSpace: true},
-  {value: '-', isSpeacial: false, isSpace: true},
-  {value: '=', isSpeacial: false, isSpace: true},
-  {value: 'Backspace', isSpeacial: true, isSpace: true},
-  {value: 'Tab', isSpeacial: false, isSpace: true},
-  {value: 'q', isSpeacial: false, isSpace: true},
-  {value: 'w', isSpeacial: false, isSpace: true},
-  {value: 'e', isSpeacial: false, isSpace: true},
-  {value: 'r', isSpeacial: false, isSpace: true},
-  {value: 't', isSpeacial: false, isSpace: true},
-  {value: 'y', isSpeacial: false, isSpace: true},
-  {value: 'u', isSpeacial: false, isSpace: true},
-  {value: 'i', isSpeacial: false, isSpace: true},
-  {value: 'o', isSpeacial: false, isSpace: true},
-  {value: 'p', isSpeacial: false, isSpace: true},
-  {value: '[', isSpeacial: false, isSpace: true},
-  {value: ']', isSpeacial: false, isSpace: true},
-  {value: '\\', isSpeacial: false, isSpace: true},
-  {value: 'del', isSpeacial: false, isSpace: true},
-  {value: 'Caps Lock', isSpeacial: true, isSpace: true},
-  {value: 'a', isSpeacial: false, isSpace: true},
-  {value: 's', isSpeacial: false, isSpace: true},
-  {value: 'd', isSpeacial: false, isSpace: true},
-  {value: 'f', isSpeacial: false, isSpace: true},
-  {value: 'g', isSpeacial: false, isSpace: true},
-  {value: 'h', isSpeacial: false, isSpace: true},
-  {value: 'j', isSpeacial: false, isSpace: true},
-  {value: 'k', isSpeacial: false, isSpace: true},
-  {value: 'l', isSpeacial: false, isSpace: true},
-  {value: ';', isSpeacial: false, isSpace: true},
-  {value: `'`, isSpeacial: false, isSpace: true},
-  {value: 'Enter', isSpeacial: true, isSpace: true},
-  {value: 'Shift', isSpeacial: true, isSpace: true},
-  {value: 'z', isSpeacial: false, isSpace: true},
-  {value: 'x', isSpeacial: false, isSpace: true},
-  {value: 'c', isSpeacial: false, isSpace: true},
-  {value: 'v', isSpeacial: false, isSpace: true},
-  {value: 'b', isSpeacial: false, isSpace: true},
-  {value: 'n', isSpeacial: false, isSpace: true},
-  {value: 'm', isSpeacial: false, isSpace: true},
-  {value: ',', isSpeacial: false, isSpace: true},
-  {value: '.', isSpeacial: false, isSpace: true},
-  {value: '/', isSpeacial: false, isSpace: true},
-  {value: 'Shift', isSpeacial: true, isSpace: true},
-  {value: 'Ctrl', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
-  {value: 'Alt', isSpeacial: false, isSpace: true},
-  {value: 'Space', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
-  {value: 'Win', isSpeacial: false, isSpace: true},
+  {value: '`', isSpecial: false, isSpace: false},
+  {value: '2', isSpecial: false, isSpace: false},
+  {value: '1', isSpecial: false, isSpace: false},
+  {value: '3', isSpecial: false, isSpace: false},
+  {value: '4', isSpecial: false, isSpace: false},
+  {value: '5', isSpecial: false, isSpace: false},
+  {value: '6', isSpecial: false, isSpace: false},
+  {value: '7', isSpecial: false, isSpace: false},
+  {value: '8', isSpecial: false, isSpace: false},
+  {value: '9', isSpecial: false, isSpace: false},
+  {value: '0', isSpecial: false, isSpace: false},
+  {value: '-', isSpecial: false, isSpace: false},
+  {value: '=', isSpecial: false, isSpace: false},
+  {value: 'Backspace', isSpecial: true, isSpace: false},
+  {value: 'Tab', isSpecial: false, isSpace: false},
+  {value: 'q', isSpecial: false, isSpace: false},
+  {value: 'w', isSpecial: false, isSpace: false},
+  {value: 'e', isSpecial: false, isSpace: false},
+  {value: 'r', isSpecial: false, isSpace: false},
+  {value: 't', isSpecial: false, isSpace: false},
+  {value: 'y', isSpecial: false, isSpace: false},
+  {value: 'u', isSpecial: false, isSpace: false},
+  {value: 'i', isSpecial: false, isSpace: false},
+  {value: 'o', isSpecial: false, isSpace: false},
+  {value: 'p', isSpecial: false, isSpace: false},
+  {value: '[', isSpecial: false, isSpace: false},
+  {value: ']', isSpecial: false, isSpace: false},
+  {value: '\\', isSpecial: false, isSpace: false},
+  {value: 'del', isSpecial: false, isSpace: false},
+  {value: 'CapsLock', isSpecial: true, isSpace: false},
+  {value: 'a', isSpecial: false, isSpace: false},
+  {value: 's', isSpecial: false, isSpace: false},
+  {value: 'd', isSpecial: false, isSpace: false},
+  {value: 'f', isSpecial: false, isSpace: false},
+  {value: 'g', isSpecial: false, isSpace: false},
+  {value: 'h', isSpecial: false, isSpace: false},
+  {value: 'j', isSpecial: false, isSpace: false},
+  {value: 'k', isSpecial: false, isSpace: false},
+  {value: 'l', isSpecial: false, isSpace: false},
+  {value: ';', isSpecial: false, isSpace: false},
+  {value: `'`, isSpecial: false, isSpace: false},
+  {value: 'Enter', isSpecial: true, isSpace: false},
+  {value: 'Shift', isSpecial: true, isSpace: false},
+  {value: '\\', isSpecial: false, isSpace: false},
+  {value: 'z', isSpecial: false, isSpace: false},
+  {value: 'x', isSpecial: false, isSpace: false},
+  {value: 'c', isSpecial: false, isSpace: false},
+  {value: 'v', isSpecial: false, isSpace: false},
+  {value: 'b', isSpecial: false, isSpace: false},
+  {value: 'n', isSpecial: false, isSpace: false},
+  {value: 'm', isSpecial: false, isSpace: false},
+  {value: ',', isSpecial: false, isSpace: false},
+  {value: '.', isSpecial: false, isSpace: false},
+  {value: '/', isSpecial: false, isSpace: false},
+  {value: 'ArrUp', isSpecial: false, isSpace: false},
+  {value: 'Shift', isSpecial: false, isSpace: false},
+  {value: 'Ctrl', isSpecial: false, isSpace: false},
+  {value: 'Win', isSpecial: false, isSpace: false},
+  {value: 'Alt', isSpecial: false, isSpace: false},
+  {value: ' ', isSpecial: false, isSpace: true},
+  {value: 'Alt', isSpecial: false, isSpace: false},
+  {value: 'Ctrl', isSpecial: false, isSpace: false},
+  {value: 'ArrLeft', isSpecial: false, isSpace: false},
+  {value: 'ArrDown', isSpecial: false, isSpace: false},
+  {value: 'ArrRight', isSpecial: false, isSpace: false},
 ]
 
+console.log(navigator.systemLanguage)
+
+const bodyInner = `
+  <textarea name="sample" id="text-input" cols="115" rows="5"></textarea>
+  <div class="keyboard" id="keyboard">
+  </div>
+`
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.innerHTML = bodyInner
+})
+
+let keyboard;
+
+const keyboardInit = setTimeout(() => {
+  keyboard = document.querySelector('#keyboard')
+  appendKeyboard()
+}, 1);
+
+function appendKeyboard() {
+  keysEn.forEach(element => {
+    const key = document.createElement('div')
+    if (element.isSpecial) {
+      key.classList.add('special-key')
+    } else if (element.isSpace) {
+      key.classList.add('space-key')
+    } else {
+      key.classList.add('key')
+    }
+    key.innerText = element.value
+    keyboard.appendChild(key)
+  })
+}
+
+
+
+addEventListener('keyup', (e) => {
+  let btns = keyboard.childNodes
+  btns.forEach(element => {
+    if (element.innerText === e.key 
+      || element.innerText === e.key.toLowerCase()
+      || element.innerText === e.key.toUpperCase()) {
+      element.classList.add('pressed')
+
+      setTimeout(() => {
+        element.classList.remove('pressed')
+      }, 100);
+  }}); 
+})
+
+let btns = keyboard.childNodes
+
+btns.forEach(element => {
+  element.addEventListener('click', () => {
+    element.classList.add('pressed')
+    setTimeout(() => {
+      element.classList.remove('pressed')
+    }, 100);
+  })
+  // console.log(element)
+    
+}); 
