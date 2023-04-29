@@ -86,23 +86,38 @@ setTimeout(() => {
 
 function appendKeyboard() {
   keysEn.forEach(element => {
-    const key = document.createElement('div')
-    if (element.isSpecial) {
-      key.classList.add('special-key')
-    } else if (element.isSpace) {
-      key.classList.add('space-key')
-    } else {
-      key.classList.add('key')
-    }
-    key.innerText = element.value
-    keyboard.appendChild(key)
-  })
+
+    addEventListener('click', (e) => {
+      if (e.getModifierState("CapsLock")) {
+        const key = document.createElement('div')
+        if (element.isSpecial) {
+          key.classList.add('special-key')
+        } else if (element.isSpace) {
+          key.classList.add('space-key')
+        } else {
+          key.classList.add('key')
+        }
+        key.innerText = element.value
+        keyboard.appendChild(key)
+      } else {
+        const key = document.createElement('div')
+        if (element.isSpecial) {
+          key.classList.add('special-key')
+        } else if (element.isSpace) {
+          key.classList.add('space-key')
+        } else {
+          key.classList.add('key')
+        }
+        key.innerText = element.value.toUpperCase()
+        keyboard.appendChild(key)
+      }})})
 }
 
 
 
 addEventListener('keyup', (e) => {
   let btns = keyboard.childNodes
+
   btns.forEach(element => {
     if (element.innerText === e.key 
       || element.innerText === e.key.toLowerCase()
@@ -119,13 +134,14 @@ addEventListener('keyup', (e) => {
 
 setTimeout(() => {
   let btns = keyboard.childNodes
+  const textarea = document.querySelector('#text-input')
 
   function clickHandler({ currentTarget: target }) {
     target.classList.add('pressed')
+    textarea.textContent += target.textContent
     setTimeout(() => {
       target.classList.remove('pressed')
     }, 150);
   }
-
   btns.forEach(btn => btn.addEventListener('click', clickHandler))
 }, 1)
