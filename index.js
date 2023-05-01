@@ -158,13 +158,11 @@ addEventListener('keyup', (e) => {
     if (element.dataset) {
       if (element.dataset.code === e.code) {
         element.classList.remove('pressed')
-        textarea.textContent += e.code
       }
       getCaps(e, element)
     } 
     if (element.innerText === e.key) {
       element.classList.remove('pressed')
-      textarea.textContent += e.key
     }
   })
 })
