@@ -1,5 +1,5 @@
 const keysEn = [
-  {value: '`',},
+  {value: '`', code: 'Backquote'},
   {value: '1',},
   {value: '2',},
   {value: '3',},
@@ -12,8 +12,8 @@ const keysEn = [
   {value: '0',},
   {value: '-',},
   {value: '=',},
-  {value: 'Backspace', isSpecial: true,},
-  {value: 'Tab',},
+  {value: 'Backspace', isSpecial: true, code: 'Backspace'},
+  {value: 'Tab', code: 'Tab'},
   {value: 'q',},
   {value: 'w',},
   {value: 'e',},
@@ -40,7 +40,7 @@ const keysEn = [
   {value: 'l',},
   {value: ';',},
   {value: `'`,},
-  {value: 'Enter', isSpecial: true,},
+  {value: 'Enter', isSpecial: true, code: 'Enter'},
   {value: 'Shift', isSpecial: true, code: "ShiftLeft"},
   {value: '\\',},
   {value: 'z',},
@@ -53,17 +53,17 @@ const keysEn = [
   {value: ',',},
   {value: '.',},
   {value: '/',},
-  {value: 'ArrUp',},
+  {value: 'ArrUp', code: 'ArrowUp'},
   {value: 'Shift', code: "ShiftRight"},
   {value: 'Ctrl', code: 'ControlLeft'},
   {value: 'Win',},
-  {value: 'Alt',},
-  {value: ' ', isSpace: true},
-  {value: 'Alt',},
+  {value: 'Alt', code: 'AltLeft'},
+  {value: ' ', isSpace: true, code: 'Space'},
+  {value: 'Alt', code: 'AltRight'},
   {value: 'Ctrl', code: 'ControlRight'},
-  {value: 'ArrLeft',},
-  {value: 'ArrDown',},
-  {value: 'ArrRight',},
+  {value: 'ArrLeft', code: 'ArrowLeft'},
+  {value: 'ArrDown', code: 'ArrowDown'},
+  {value: 'ArrRight', code: 'ArrowRight'},
 ]
 
 const bodyInner = `
@@ -103,20 +103,17 @@ function appendKeyboard() {
 }
 
 function getCaps(e, element) {
-  if (e.code === 'CapsLock' || e.code === "ShiftLeft" || e.code === "ShiftRight") {
-    if (e.getModifierState("CapsLock")) {
-      if (e.getModifierState("Shift")) {
-        console.log(1)
-        notCaps(element)
-      } else {
-        Caps(element)
-      }
+  if (e.getModifierState("CapsLock")) {
+    if (e.getModifierState("Shift")) {
+      notCaps(element)
     } else {
-      if (e.getModifierState("Shift")) {
-        Caps(element)
-      } else {
-        notCaps(element)
-      }
+      Caps(element)
+    }
+  } else {
+    if (e.getModifierState("Shift")) {
+      Caps(element)
+    } else {
+      notCaps(element)
     }
   }
 }
@@ -136,12 +133,21 @@ addEventListener('keydown', (e) => {
   const textarea = document.querySelector('#text-input')
 
   btns.forEach(element => {
+    e.preventDefault()
     if (element.dataset) {
       if (element.dataset.code === e.code) {
         element.classList.add('pressed')
-        textarea.textContent += e.code
+        if (e.code === 'Enter') 
+          textarea.textContent += '\n';
+        if (e.code === 'Tab')
+          textarea.textContent += '    ';
+        if (e.code === 'Backspace')
+          textarea.textContent = textarea.textContent.slice(0, (textarea.textContent.length - 1))
       }
-      getCaps(e, element)
+      
+      if (e.code === 'CapsLock' || e.code === "ShiftLeft" || e.code === "ShiftRight") {
+        getCaps(e, element)
+      }
     } 
     if (element.innerText === e.key) {
       element.classList.add('pressed')
